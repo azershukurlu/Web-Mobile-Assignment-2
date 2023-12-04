@@ -5,13 +5,10 @@ function getProducts() {
         .catch(error => console.log('error:', error))
 }
 
-
-
-
 function createCard(data) {
     const cardContainer = document.getElementById("card-container");
     data.products.forEach(products => {
-        console.log(products.images[0])
+        console.log(products)
         cardContainer.innerHTML += `
         <div class="card">
             <div class="img">
@@ -22,9 +19,6 @@ function createCard(data) {
             <a href="" class="detail-button">Details</a>
         </div>`
     });
-
-
-
 }
 
 getProducts();
