@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+/* html,body{
+    height: 100%;
+} */
 
 nav {
     background-color: #333333;
@@ -45,7 +48,7 @@ nav form button {
 }
 
 .content {
-    /* height: calc(100vh - 70px); */
+    height: 100%;
     display: flex;
     background-color: #fff;
 }
@@ -72,19 +75,66 @@ nav form button {
 
 
 .right-side {
+    flex: 1;
     width: 100%;
 }
 
 .right-side .card-container {
-    width: 100%;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content:start;
-    align-items: center;
+    gap: 20px;
 }
 
 .right-side .card-container .card {
+    width: calc(20% - 20px);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.right-side .card-container .card .img{
+  height: 250px !important;
+  
+}
+.right-side .card-container .card img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.right-side .card-container .card h3 {
+    margin-top: 0;
+}
+
+.right-side .card-container .card p {
+    margin-bottom: 5px;
+}
+
+.right-side .card-container .card .detail-button {
+    padding: 8px 16px;
+    background-color: #336699;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.right-side .card-container .card .detail-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+/* .right-side .card-container .card {
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 10.5px;
@@ -125,4 +175,4 @@ nav form button {
 
 .right-side .card-container .card .card-detail-btn:hover {
     background-color: #0056b3;
-}
+} */
