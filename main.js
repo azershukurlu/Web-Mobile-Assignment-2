@@ -2,26 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('card-container');
     const searchInput = document.getElementById('searchBox')
     const categoryUl = document.getElementById('category')
-    const prevButton = document.getElementById('prevPage');
-    const nextButton = document.getElementById('nextPage');
-    const pageIndicator = document.getElementById('currentPage');
-
-
-    const itemsPerPage = 10;
-    let currentPage = 1;
-    let totalItems = 0;
 
     let productsData = []
-    prevButton.addEventListener('click', function () {
-        if (currentPage > 1) {
-            changePage(currentPage - 1);
-        }
-    });
-    nextButton.addEventListener('click', function () {
-        if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
-            changePage(currentPage + 1);
-        }
-    });
+
 
     searchInput.addEventListener('keyup', function (event) {
         const searchTerm = event.target.value.toLowerCase();
@@ -31,23 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
             );
         displayProducts(filteredProducts)
     })
-    async function fetchProducts(page = 1) {
+    async function fetchProducts() {
 
-        const response = await fetch(`https://dummyjson.com/products?page=${page}&limit=${itemsPerPage}`);
-
+        const response = await fetch(`https://dummyjson.com/products`);
         const data = await response.json()
         productsData = data.products
+        console.log(data.products);
         displayProducts(productsData)
-        updatePageIndicator();
 
     }
-    function changePage(page) {
-        currentPage = page;
-        fetchProducts(currentPage);
-    }
-    function updatePageIndicator() {
-        pageIndicator.textContent = `Page ${currentPage} of ${Math.ceil(totalItems / itemsPerPage)}`;
-    }
+
 
     async function fetchCategories() {
         const response = await fetch('https://dummyjson.com/products/categories');
@@ -66,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <h3>${product.title}</h3>
             <p>Category: ${product.category}</p>
             <p>Price: ${product.price}</p>
-            <p>Old Price: ${product.price + (product.price * product.discountPercentage / 100)}</p>
+            <p>Old Price: ${Math.ceil(product.price + (product.price * product.discountPercentage / 100))}</p>
             <p>Stock: ${product.stock}</p>
             <button onclick="redirectToDetailPage(${product.id})" class="detail-button">Details</button>
              </div>
@@ -90,13 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-
     fetchCategories();
-    fetchProducts(currentPage);
-
-
-
+    fetchProducts();
 });
 
 
@@ -139,12 +110,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(productData => {
             producDetailDisplay(productData);
-        })
+        }).catch(err=>console.log(err))
 
 });
 
 function producDetailDisplay(data) {
-    console.log(data.images[0]);
     productContainer.innerHTML = ` 
     <div class="product">
         <div class="col">

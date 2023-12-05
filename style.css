@@ -4,7 +4,9 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
+body{
+   height: 100%
+}
 nav {
     background-color: #333333;
     display: flex;
@@ -12,11 +14,34 @@ nav {
     align-items: center;
     height: 70px;
 }
+.pagination{
+
+}
+#prevPage,#nextPage{
+    color: #333333;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #000000;
+    padding: 0.2rem;
+    width: 7rem;
+    text-align: center;
+    cursor: pointer;
+}
+#prevPage:hover,#nextPage:hover{
+    background-color: #0056b3;
+    transition: .4s;
+    color: white;
+    border-color: #0056b3;
+}
 
 nav h1 {
     color: #666666;
     padding: 40px;
     font-size: 28px;
+}
+nav a{
+    color:inherit;
+    text-decoration: none;
 }
 
 nav form {
@@ -52,13 +77,15 @@ nav form button {
 }
 
 .content {
-    height: auto;
+    height: 100%;
     display: flex;
     background-color: #fff;
 }
 
 .left-side {
-    height: auto;
+    border-right: 1px solid #333333;
+    min-height:100vh;
+    height: 100%;
     width: 150px;
     background-color: #336699;
 }
@@ -88,8 +115,6 @@ nav form button {
 }
 
 .right-side .card-container {
-    height: calc(100vh - 70px);
-
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -97,7 +122,7 @@ nav form button {
 }
 
 .right-side .card-container .card {
-    max-height: 300px;
+    max-height: 400px;
     width: calc(20% - 20px);
     padding: 15px;
     border: 1px solid #ccc;
