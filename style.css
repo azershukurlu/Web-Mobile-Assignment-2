@@ -34,6 +34,14 @@ nav form input {
     padding: 8px;
     letter-spacing: 1px;
 }
+.pagination button{
+    font-size: 15px;
+    border: none;
+    border-radius: 2px;
+    background-color: #336699;
+    padding: 8px;
+    letter-spacing: 1px;
+}
 nav form button {
     font-size: 15px;
     border: none;
@@ -44,12 +52,13 @@ nav form button {
 }
 
 .content {
-    height: 100%;
+    height: auto;
     display: flex;
     background-color: #fff;
 }
 
 .left-side {
+    height: auto;
     width: 150px;
     background-color: #336699;
 }
@@ -57,10 +66,16 @@ nav form button {
 .left-side ul {
     list-style: none;
 }
+.left-side ul li {
+    display: block;
+    padding: 7px;
+    text-decoration: none;
+    color: #000000;
+}
 
 .left-side li a {
     display: block;
-    padding: 15px;
+    padding: 7px;
     text-decoration: none;
     color: #000000;
 }
@@ -71,11 +86,13 @@ nav form button {
 
 
 .right-side {
+    height: 100%;
     flex: 1;
     width: 100%;
 }
 
 .right-side .card-container {
+    height: calc(100vh - 70px);
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +111,7 @@ nav form button {
     justify-content: space-between;
 }
 .right-side .card-container .card .img{
-  height: 250px !important;
+  height: 100px !important;
   
 }
 .right-side .card-container .card img {
