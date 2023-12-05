@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('card-container');
     const searchInput = document.getElementById('searchBox')
-    const categoryArea = document.getElementById('category')
+    const categoryUl = document.getElementById('category')
+
+
+
+
+
     let productsData = []
 
     searchInput.addEventListener('keyup', function (event) {
@@ -30,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function displayProducts(products) {
         productList.innerHTML = "";
-
         products.forEach(product => {
             productList.innerHTML += `
             <div class="card">
@@ -50,25 +54,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function displayCategories(categories) {
         categories.forEach(category => {
-            categoryArea.innerHTML += `<li id="list-item">${category}</li>`
-            const listItem = document.getElementById('list-item')
-            listItem.addEventListener('click', async () => {
-                console.log("salam");
-                const productsResponse = await fetch(`https://dummyjson.com/products?category=${category}`)
-                const products = await productsResponse.json();
-
-                displayProducts(products);
-            })
+            categoryUl.innerHTML += `<li id="list-item">${category}</li>`
 
         })
+        var listItems = document.querySelectorAll("#list-item");
+        listItems.forEach(function (sidebar) {
+            sidebar.addEventListener("click", function (event) {
+                var clickedItems = event.target.textContent;
+                var endpoint = 'https://dummyjson.com/products/category/' + clickedItems.toLowerCase();
+                fetch(endpoint).then(response => response.json()).then(data => displayProducts(data.products))
+            })
+        });
 
     }
+
 
 
     fetchCategories();
     fetchProducts();
 
+    
 
 });
-
-

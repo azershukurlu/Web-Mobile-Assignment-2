@@ -71,14 +71,10 @@ nav form button {
     padding: 7px;
     text-decoration: none;
     color: #000000;
+    cursor: pointer;
 }
 
-.left-side li a {
-    display: block;
-    padding: 7px;
-    text-decoration: none;
-    color: #000000;
-}
+
 
 .left-side li a:hover {
     background-color: #ddd;
